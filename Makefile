@@ -6,7 +6,7 @@
 #    By: fdelsing <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/03 22:10:04 by fdelsing          #+#    #+#              #
-#    Updated: 2018/03/03 22:18:59 by fdelsing         ###   ########.fr        #
+#    Updated: 2018/03/04 19:41:20 by fdelsing         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror $(HEADER)
 FLAGS = -lmlx -framework OpenGL -framework Appkit
 
-SRC = main.c ft_init_mlx.c
+SRC = main.c ft_init_mlx.c ft_put_pixel.c mandelbrot.c
 
 OBJ = $(SRC:.c=.o)
 

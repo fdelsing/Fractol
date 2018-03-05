@@ -6,7 +6,7 @@
 #    By: fdelsing <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/03 22:10:04 by fdelsing          #+#    #+#              #
-#    Updated: 2018/03/04 19:41:20 by fdelsing         ###   ########.fr        #
+#    Updated: 2018/03/05 23:02:47 by fdelsing         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror $(HEADER)
 FLAGS = -lmlx -framework OpenGL -framework Appkit
 
-SRC = main.c ft_init_mlx.c ft_put_pixel.c mandelbrot.c
+SRC = main.c ft_init_mlx.c ft_put_pixel.c mandelbrot.c keyhook.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -28,12 +28,18 @@ $(NAME): $(OBJ)
 	$(CC) -o $(NAME) -L./libft/ -lft $(FLAGS) $(OBJ)
 
 clean:
-	$(MAKE) clean -C ./libft
 	rm -rf $(OBJ)
 
-fclean:
-	$(MAKE) fclean -C ./libft
+libclean:
+	$(MAKE) clean -C ./libft
+
+fclean: clean
 	rm -f $(NAME)
 
+libfclean:
+	$(MAKE) fclean -C ./libft
+
 re: fclean all
+
+libre:
 	$(MAKE) re -C ./libft

@@ -6,7 +6,7 @@
 /*   By: fdelsing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 17:01:27 by fdelsing          #+#    #+#             */
-/*   Updated: 2018/03/04 21:18:00 by fdelsing         ###   ########.fr       */
+/*   Updated: 2018/03/05 21:11:15 by fdelsing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ int		mandelbrot(t_context *f, double c_r, double c_i)
 		z_i = 2 * tmp * z_i + c_i;
 		iter++;
 	}
+//	printf("iter = %d\n", iter);
 	return (iter);
 }

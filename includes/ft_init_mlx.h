@@ -6,7 +6,7 @@
 /*   By: fdelsing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 21:53:16 by fdelsing          #+#    #+#             */
-/*   Updated: 2018/03/05 16:47:47 by fdelsing         ###   ########.fr       */
+/*   Updated: 2018/03/06 15:43:06 by fdelsing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include <mlx.h>
 
-# define WIN_X 2500
+# define WIN_X 2200
 # define WIN_Y 1200
 
 typedef	struct	s_img

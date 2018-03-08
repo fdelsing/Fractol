@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fdelsing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/04 17:01:27 by fdelsing          #+#    #+#             */
-/*   Updated: 2018/03/08 17:51:12 by fdelsing         ###   ########.fr       */
+/*   Created: 2018/03/08 17:50:10 by fdelsing          #+#    #+#             */
+/*   Updated: 2018/03/08 17:57:51 by fdelsing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fractol.h>
+#include "fractol.h"
 
-void	travel_map_mand(t_context *f)
+void	travel_map_jul(t_context *f)
 {
 	int		x;
 	int		y;
@@ -25,11 +25,11 @@ void	travel_map_mand(t_context *f)
 		y = 0;
 		while (y <= WIN_Y)
 		{
-			c_r = (x - f->p.c_x) * f->ratio * f->zoom;
-			c_i = (y - f->p.c_y) * f->ratio * f->zoom;
-			f->p.img.color = mandelbrot(f, c_r, c_i) * 0x0000ff / f->max_iter;
+			c_r = (x - /*f->p.c_x + */(WIN_X - f->m_x)) * f->ratio * f->zoom;
+			c_i = (y - /*f->p.c_y + */(WIN_Y - f->m_y)) * f->ratio * f->zoom;
+			f->p.img.color = julia(f, c_r, c_i) * 0x0000ff / f->max_iter;
 			ft_put_pixel(f->p.img.data_img, x, y, &f->p);
-		//if (mandelbrot(f, c_r, c_i) == f->max_iter + 1)
+	//	if (julia(f, c_r, c_i) == f->max_iter + 1)
 			//		ft_put_pixel(f->p.img.data_img, x, y, &f->p);
 			y++;
 		}
@@ -38,7 +38,7 @@ void	travel_map_mand(t_context *f)
 	mlx_put_image_to_window(f->p.mlx, f->p.win, f->p.img.img, 0, 0);
 }
 
-int		mandelbrot(t_context *f, double c_r, double c_i)
+int		julia(t_context *f, double c_r, double c_i)
 {
 	int		iter;
 	float	tmp;

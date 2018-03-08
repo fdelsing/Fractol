@@ -6,7 +6,7 @@
 /*   By: fdelsing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 22:00:48 by fdelsing          #+#    #+#             */
-/*   Updated: 2018/03/06 18:41:39 by fdelsing         ###   ########.fr       */
+/*   Updated: 2018/03/08 20:56:12 by fdelsing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,12 @@ int		fract_name(char *name)
 	return (0);
 }
 
-void	init_context(t_context *f, char *name)
+void	init_context(t_context *f)
 {
 	f->max_iter = 60;
 	f->ratio = 2.1 / (WIN_Y / 2);
 	f->zoom = 1;
-	f->name = fract_name(name);
+//	f->name = fract_name(name);
 }
 
 int		main(int argc, char **argv)
@@ -59,14 +59,16 @@ int		main(int argc, char **argv)
 		while (argv[i])
 		{
 			check_arg(argv[i]);
+			f.name = fract_name(argv[i]);
 			ft_init_mlx(&f.p, argv[i]);
-			init_context(&f, argv[i]);
+			init_context(&f);
 			if (f.name == 0)
 				travel_map_mand(&f);
 			i++;
 		}
 		mlx_hook(f.p.win, 4, 1 << 8, mousehook, &f);
-		mlx_hook(f.p.win, 6, 0, mousepos, &f);
+		if (f.name == 1)
+			mlx_hook(f.p.win, 6, 0, mousepos, &f);
 		mlx_hook(f.p.win, 2, 1 << 8, keyhook, &f);
 		mlx_loop(f.p.mlx);
 	}

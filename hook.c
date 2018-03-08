@@ -6,7 +6,7 @@
 /*   By: fdelsing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 13:59:07 by fdelsing          #+#    #+#             */
-/*   Updated: 2018/03/06 18:41:43 by fdelsing         ###   ########.fr       */
+/*   Updated: 2018/03/08 20:56:10 by fdelsing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,12 @@ int		keyhook(int keycode, t_context *f)
 		crash(3);
 	if (keycode >= 123 && keycode <= 126)
 		translation(keycode, f);
+	if (keycode == 256)
+	{
+		init_context(f);
+		f->p.c_x = WIN_X/2;
+		f->p.c_y = WIN_Y/2;
+	}
 	travel_map_mand(f);
 	return (0);
 }
@@ -49,19 +55,16 @@ int		mousehook(int button, int x, int y, t_context *f)
 	if (button == 4) // zoom in
 	{
 		f->zoom *= 0.8;
-		f->p.c_x += ((WIN_X / 2) -x) / f->zoom;
-		f->p.c_y += ((WIN_Y / 2) -y) / f->zoom;
+		f->p.c_x += ((WIN_X / 2) -x) * f->zoom;
+		f->p.c_y += ((WIN_Y / 2) -y) * f->zoom;
 	}
-//	f->p.c_x += ((WIN_X / 2) -x) / f->zoom;
-//	f->p.c_y += ((WIN_Y / 2) -y) / f->zoom;
-// 	be careful with button 6 and 7
 	travel_map_mand(f);
 	return (0);
 }
 
 int		mousepos(int x, int y, t_context *f)
 {
-	//printf(" x = %d, y =  %d\n", x, y);
+	printf(" x = %d, y =  %d\n", x, y);
 	f->m_x = x;
 	f->m_y = y;
 	return (0);

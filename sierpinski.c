@@ -1,45 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   julia.c                                            :+:      :+:    :+:   */
+/*   sierpinski.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fdelsing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/08 17:50:10 by fdelsing          #+#    #+#             */
-/*   Updated: 2018/03/13 20:58:52 by fdelsing         ###   ########.fr       */
+/*   Created: 2018/03/13 21:01:00 by fdelsing          #+#    #+#             */
+/*   Updated: 2018/03/13 23:09:10 by fdelsing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include <fractol.h>
 
-static int	algo(t_context *f, double c_r, double c_i)
+static int	algo(t_context *f, double x, double y)
 {
 	int		iter;
-	float	tmp;
-	float	z_r;
-	float	z_i;
+	float	size;
 
-	z_r = c_r;
-	z_i = c_i;
-	c_r = ((f->m_x - f->p.c_x) * f->ratio);
-	c_i = ((f->m_y - f->p.c_y) * f->ratio);
+	size = 1;
 	iter = 0;
-	while ((z_r * z_r) + (z_i * z_i) < 4 && iter <= f->max_iter)
+	while ((((fabs(x) <= size) || fabs(x) >= size * 2)  &&
+				(fabs(y) <= size || fabs(y) >= size * 2))
+				&& iter <= f->max_iter)
 	{
-		tmp = z_r;
-		z_r = (z_r * z_r) - (z_i * z_i) + c_r;
-		z_i = 2 * tmp * z_i + c_i;
 		iter++;
+		size = size / 2;
 	}
+//	printf("iter = %d\n", iter);
+//	printf("x = %f y = %f\n", x, y);
 	return (iter);
 }
 
-void	julia(t_context *f)
+void		sierpinski(t_context *f)
 {
 	int		x;
 	int		y;
-	double	c_r;
-	double	c_i;
+	double	valx;
+	double	valy;
 
 	x = 0;
 	while (x <= WIN_X)
@@ -47,12 +44,12 @@ void	julia(t_context *f)
 		y = 0;
 		while (y <= WIN_Y)
 		{
-			c_r = (x - f->p.c_x) * f->ratio;// * f->zoom;
-			c_i = (y - f->p.c_y) * f->ratio;// * f->zoom;
-			f->p.img.color = algo(f, c_r, c_i) * 0x0000ff / f->max_iter;
+		//	printf("ratio = %f\n", f->ratio);
+			f->p.img.color = 0x0000ff;
+			valx = (x - f->p.c_x) * f->ratio;
+			valy = (y - f->p.c_y) * f->ratio;
+			f->p.img.color = algo(f, valx, valy) * 0xffffff / f->max_iter;
 			ft_put_pixel(f->p.img.data_img, x, y, &f->p);
-	//	if (julia(f, c_r, c_i) == f->max_iter + 1)
-			//		ft_put_pixel(f->p.img.data_img, x, y, &f->p);
 			y++;
 		}
 		x++;

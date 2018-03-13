@@ -6,7 +6,7 @@
 /*   By: fdelsing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 22:19:22 by fdelsing          #+#    #+#             */
-/*   Updated: 2018/03/08 20:56:15 by fdelsing         ###   ########.fr       */
+/*   Updated: 2018/03/13 21:44:07 by fdelsing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,10 @@ void	init_context(t_context *f);
 void	crash(int i);
 void	ft_put_pixel(int *data_img, int x, int y, t_param *p);
 void	ft_init_mlx(t_param *p, char *win_name);
-void	travel_map_mand(t_context *f);
-void	travel_map_jul(t_context *f);
-
-int		mandelbrot(t_context *f, double c_r, double c_i);
-int		julia(t_context *f, double c_r, double c_i);
+void	mandelbrot(t_context *f);
+void	julia(t_context *f);
+void	burning_ship(t_context *f);
+void	sierpinski(t_context *f);
 
 int		keyhook(int keycode, t_context *f);
 int		mousehook(int button, int x, int y, t_context *f);

@@ -6,7 +6,7 @@
 /*   By: fdelsing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 22:00:48 by fdelsing          #+#    #+#             */
-/*   Updated: 2018/03/13 23:09:12 by fdelsing         ###   ########.fr       */
+/*   Updated: 2018/03/14 20:36:20 by fdelsing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	init_context(t_context *f)
 {
 	f->m_x = 93;
 	f->m_y = 52;
-	f->max_iter = 3;
+	f->max_iter = 1;
 	f->ratio = 2.1 / (WIN_Y / 2);
 	printf("ratio = %f\n", f->ratio);
 	f->zoom = 1;
@@ -71,22 +71,18 @@ int		main(int argc, char **argv)
 			f.name = fract_name(argv[i]);
 			ft_init_mlx(&f.p, argv[i]);
 			init_context(&f);
-			if (f.name == 0)
+			fractals(&f);
+/*			if (f.name == 0)
 				mandelbrot(&f);
 			if (f.name == 1)
 				julia(&f);
 			if (f.name == 2)
 				burning_ship(&f);
 			if (f.name == 3)
-				sierpinski(&f);
+				sierpinski(&f);*/
 			i++;
 		}
-		printf("mx = %f my = %f\n", f.m_x * f.ratio, f.m_y * f.ratio);
-		mlx_hook(f.p.win, 6, 0, mousepos, &f);
-		mlx_hook(f.p.win, 4, 1 << 8, mousehook, &f);
-	//	mlx_hook(f.p.win, 6, 0, mousepos, &f);
-		mlx_hook(f.p.win, 2, 1 << 8, keyhook, &f);
-		mlx_loop(f.p.mlx);
+		hook(&f);
 	}
 	else
 		crash(1);

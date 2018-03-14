@@ -6,7 +6,7 @@
 /*   By: fdelsing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 17:01:27 by fdelsing          #+#    #+#             */
-/*   Updated: 2018/03/13 21:02:25 by fdelsing         ###   ########.fr       */
+/*   Updated: 2018/03/14 20:36:19 by fdelsing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ void		mandelbrot(t_context *f)
 		{
 			c_r = (x - f->p.c_x) * f->ratio * f->zoom;
 			c_i = (y - f->p.c_y) * f->ratio * f->zoom;
+			//if (algo(f, c_r, c_i) != 1)
+			//	f->p.img.color = 0xffffff;
 			f->p.img.color = algo(f, c_r, c_i) * 0x0000ff / f->max_iter;
 			ft_put_pixel(f->p.img.data_img, x, y, &f->p);
 		//if (mandelbrot(f, c_r, c_i) == f->max_iter + 1)

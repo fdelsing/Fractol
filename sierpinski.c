@@ -6,7 +6,7 @@
 /*   By: fdelsing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 21:01:00 by fdelsing          #+#    #+#             */
-/*   Updated: 2018/03/13 23:09:10 by fdelsing         ###   ########.fr       */
+/*   Updated: 2018/03/14 20:36:16 by fdelsing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,17 @@
 static int	algo(t_context *f, double x, double y)
 {
 	int		iter;
-	float	size;
+	int		size;
 
 	size = 1;
 	iter = 0;
-	while ((((fabs(x) <= size) || fabs(x) >= size * 2)  &&
-				(fabs(y) <= size || fabs(y) >= size * 2))
-				&& iter <= f->max_iter)
+	while ((((fabs(x) >= size) ||
+				(fabs(y) >= size))) &&
+				size % 3 == 1 && iter <= f->max_iter)
 	{
+			x = x * 3;
+			y = y * 3;
 		iter++;
-		size = size / 2;
 	}
 //	printf("iter = %d\n", iter);
 //	printf("x = %f y = %f\n", x, y);
@@ -45,7 +46,7 @@ void		sierpinski(t_context *f)
 		while (y <= WIN_Y)
 		{
 		//	printf("ratio = %f\n", f->ratio);
-			f->p.img.color = 0x0000ff;
+			//f->p.img.color = 0x0000ff;
 			valx = (x - f->p.c_x) * f->ratio;
 			valy = (y - f->p.c_y) * f->ratio;
 			f->p.img.color = algo(f, valx, valy) * 0xffffff / f->max_iter;

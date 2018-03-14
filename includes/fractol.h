@@ -6,7 +6,7 @@
 /*   By: fdelsing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 22:19:22 by fdelsing          #+#    #+#             */
-/*   Updated: 2018/03/13 21:44:07 by fdelsing         ###   ########.fr       */
+/*   Updated: 2018/03/14 16:44:03 by fdelsing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,10 @@ typedef	struct	s_context
 	int		m_y;
 }				t_context;
 
+void	fractals(t_context *f);
 void	init_context(t_context *f);
 void	crash(int i);
+void	hook(t_context *f);
 void	ft_put_pixel(int *data_img, int x, int y, t_param *p);
 void	ft_init_mlx(t_param *p, char *win_name);
 void	mandelbrot(t_context *f);

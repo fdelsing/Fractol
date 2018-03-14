@@ -6,7 +6,7 @@
 /*   By: fdelsing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 13:59:07 by fdelsing          #+#    #+#             */
-/*   Updated: 2018/03/13 21:17:09 by fdelsing         ###   ########.fr       */
+/*   Updated: 2018/03/14 16:45:06 by fdelsing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int		keyhook(int keycode, t_context *f)
 //		printf("dir_x = f->m_x ");
 	}
 	/////////
-	mandelbrot(f);
+	fractals(f);
 	return (0);
 }
 
@@ -86,7 +86,7 @@ int		mousehook(int button, int x, int y, t_context *f)
 		f->p.c_x += ((WIN_X / 2) -x) * f->zoom;
 		f->p.c_y += ((WIN_Y / 2) -y) * f->zoom;
 	}
-	mandelbrot(f);
+	fractals(f);
 	return (0);
 }
 
@@ -98,7 +98,16 @@ int		mousepos(int x, int y, t_context *f)
 		ft_bzero((char*)f->p.img.data_img, (WIN_X * WIN_Y) * 4);
 	f->m_x = x;
 	f->m_y = y;
-	if (f->name == 1)
-		julia(f);
+	fractals(f);
 	return (0);
+}
+
+void	hook(t_context *f)
+{
+		mlx_hook(f->p.win, 6, 0, mousepos, f);
+		mlx_hook(f->p.win, 4, 1 << 8, mousehook, f);
+	//	mlx_hook(f.p.win, 6, 0, mousepos, &f);
+		mlx_hook(f->p.win, 2, 1 << 8, keyhook, f);
+		mlx_loop(f->p.mlx);
+
 }

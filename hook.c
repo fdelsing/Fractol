@@ -6,7 +6,7 @@
 /*   By: fdelsing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 13:59:07 by fdelsing          #+#    #+#             */
-/*   Updated: 2018/03/14 16:45:06 by fdelsing         ###   ########.fr       */
+/*   Updated: 2018/03/15 23:49:45 by fdelsing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,16 @@ int		translation(int keycode, t_context *f)
 
 int		keyhook(int keycode, t_context *f)
 {
-	ft_bzero((char*)f->p.img.data_img, (WIN_X * WIN_Y) * 4);
 	if (keycode == 53)
 		crash(3);
 	if (keycode >= 123 && keycode <= 126)
 		translation(keycode, f);
+	if (keycode == 49)
+	{
+		if (f->palette == 1)
+			f->palette = -1;
+		f->palette++;
+	}
 	if (keycode == 256)
 	{
 		init_context(f);
@@ -43,16 +48,16 @@ int		keyhook(int keycode, t_context *f)
 	{
 		f->zoom *= 1 / 0.8;
 		f->ratio *= 1/0.8;
-		f->p.c_x += ((WIN_X /2)- f->m_x) / f->zoom;
-		f->p.c_y += ((WIN_Y/2) - f->m_y) / f->zoom;
+//		f->p.c_x += ((WIN_X /2)- f->m_x) / f->zoom;
+//		f->p.c_y += ((WIN_Y/2) - f->m_y) / f->zoom;
 	}
 	if (keycode == 24) // zoom in
 	{
 		f->zoom *= 0.8;
 		f->ratio *= 0.8;
 		printf("zoom = %f\n", f->zoom);
-		f->p.c_x += ((WIN_X / 2) - f->m_x) * f->zoom;
-		f->p.c_y += ((WIN_Y / 2) - f->m_y) * f->zoom;
+//		f->p.c_x += ((WIN_X / 2) - f->m_x) * f->zoom;
+//		f->p.c_y += ((WIN_Y / 2) - f->m_y) * f->zoom;
 
 		printf("p_x = %d, p_y = %d\n", f->p.c_x, f->p.c_y);
 
@@ -109,5 +114,4 @@ void	hook(t_context *f)
 	//	mlx_hook(f.p.win, 6, 0, mousepos, &f);
 		mlx_hook(f->p.win, 2, 1 << 8, keyhook, f);
 		mlx_loop(f->p.mlx);
-
 }

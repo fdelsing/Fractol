@@ -6,7 +6,7 @@
 /*   By: fdelsing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 22:19:22 by fdelsing          #+#    #+#             */
-/*   Updated: 2018/03/14 16:44:03 by fdelsing         ###   ########.fr       */
+/*   Updated: 2018/03/15 21:53:29 by fdelsing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef	struct	s_context
 	double	zoom;
 	int		m_x;
 	int		m_y;
+	int		palette;
 }				t_context;
 
 void	fractals(t_context *f);
@@ -36,10 +37,13 @@ void	crash(int i);
 void	hook(t_context *f);
 void	ft_put_pixel(int *data_img, int x, int y, t_param *p);
 void	ft_init_mlx(t_param *p, char *win_name);
+void	color(int iter, t_context *f);
+
 void	mandelbrot(t_context *f);
 void	julia(t_context *f);
 void	burning_ship(t_context *f);
 void	sierpinski(t_context *f);
+void	bla(t_context *f);
 
 int		keyhook(int keycode, t_context *f);
 int		mousehook(int button, int x, int y, t_context *f);

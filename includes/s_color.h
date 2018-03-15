@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_mlx.c                                         :+:      :+:    :+:   */
+/*   s_color.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fdelsing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/03 21:46:37 by fdelsing          #+#    #+#             */
-/*   Updated: 2018/03/15 21:45:19 by fdelsing         ###   ########.fr       */
+/*   Created: 2018/03/15 21:38:18 by fdelsing          #+#    #+#             */
+/*   Updated: 2018/03/15 23:49:47 by fdelsing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_init_mlx.h>
-#include <mlx.h>
-
-void	ft_init_mlx(t_param *p, char *win_name)
+typedef union	u_color
 {
-	p->mlx = mlx_init();
-	p->win = mlx_new_window(p->mlx, WIN_X, WIN_Y, win_name);
-	p->c_x = WIN_X / 2;
-	p->c_y = WIN_Y / 2;
-	p->img.img = mlx_new_image(p->mlx, WIN_X, WIN_Y);
-	p->img.data_img = (int*)mlx_get_data_addr(p->img.img,
-			&p->img.bpp, &p->img.s_l, &p->img.endian);
-	p->img.color.hex = 0x0000FF;
-}
+	unsigned int	hex;
+	struct	s_rgba
+	{
+		unsigned char b;
+		unsigned char g;
+		unsigned char r;
+		unsigned char a;
+	}		rgba;
+}				t_color;

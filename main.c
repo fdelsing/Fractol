@@ -6,7 +6,7 @@
 /*   By: fdelsing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 22:00:48 by fdelsing          #+#    #+#             */
-/*   Updated: 2018/03/14 20:36:20 by fdelsing         ###   ########.fr       */
+/*   Updated: 2018/03/15 22:04:46 by fdelsing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ void	check_arg(char *arg)
 	if (ft_strcmp(arg, "Mandelbrot") != 0 &&
 			ft_strcmp(arg, "Julia") != 0 &&
 			ft_strcmp(arg, "BurningShip") != 0 &&
-			ft_strcmp(arg, "Sierpinski") != 0 )
+			ft_strcmp(arg, "Sierpinski") != 0 &&
+			ft_strcmp(arg, "bla") != 0 )
 		crash(1);
 }
 
@@ -44,16 +45,18 @@ int		fract_name(char *name)
 		return (2);
 	if (ft_strcmp(name, "Sierpinski") == 0)
 		return (3);
+	if (ft_strcmp(name, "bla") == 0)
+		return (4);
 	return (0);
 }
 
 void	init_context(t_context *f)
 {
+	f->palette = 0;
 	f->m_x = 93;
 	f->m_y = 52;
-	f->max_iter = 1;
+	f->max_iter = 50;
 	f->ratio = 2.1 / (WIN_Y / 2);
-	printf("ratio = %f\n", f->ratio);
 	f->zoom = 1;
 }
 
@@ -72,14 +75,6 @@ int		main(int argc, char **argv)
 			ft_init_mlx(&f.p, argv[i]);
 			init_context(&f);
 			fractals(&f);
-/*			if (f.name == 0)
-				mandelbrot(&f);
-			if (f.name == 1)
-				julia(&f);
-			if (f.name == 2)
-				burning_ship(&f);
-			if (f.name == 3)
-				sierpinski(&f);*/
 			i++;
 		}
 		hook(&f);

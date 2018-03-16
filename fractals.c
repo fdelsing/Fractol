@@ -6,7 +6,7 @@
 /*   By: fdelsing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 16:42:10 by fdelsing          #+#    #+#             */
-/*   Updated: 2018/03/15 23:49:42 by fdelsing         ###   ########.fr       */
+/*   Updated: 2018/03/16 16:27:22 by fdelsing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ void	fractals(t_context *f)
 		sierpinski(f);
 	if (f->name == 4)
 		bla(f);
+	if (f->name == 5)
+		multibrot(f);
+
 }
 
 void	color(int iter, t_context *f)

@@ -6,7 +6,7 @@
 #    By: fdelsing <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/03 22:10:04 by fdelsing          #+#    #+#              #
-#    Updated: 2018/03/15 18:03:41 by fdelsing         ###   ########.fr        #
+#    Updated: 2018/03/16 16:15:18 by fdelsing         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ CFLAGS = $(HEADER)
 FLAGS = -lmlx -framework OpenGL -framework Appkit
 
 SRC = main.c ft_init_mlx.c ft_put_pixel.c mandelbrot.c julia.c burningship.c \
-	  bla.c sierpinski.c hook.c fractals.c
+	  multibrot.c bla.c sierpinski.c hook.c fractals.c
 
 OBJ = $(SRC:.c=.o)
 

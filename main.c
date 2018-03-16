@@ -6,7 +6,7 @@
 /*   By: fdelsing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 22:00:48 by fdelsing          #+#    #+#             */
-/*   Updated: 2018/03/15 22:04:46 by fdelsing         ###   ########.fr       */
+/*   Updated: 2018/03/16 16:35:55 by fdelsing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,10 @@ void	check_arg(char *arg)
 {
 	if (ft_strcmp(arg, "Mandelbrot") != 0 &&
 			ft_strcmp(arg, "Julia") != 0 &&
-			ft_strcmp(arg, "BurningShip") != 0 &&
+			ft_strcmp(arg, "Burningship") != 0 &&
 			ft_strcmp(arg, "Sierpinski") != 0 &&
-			ft_strcmp(arg, "bla") != 0 )
+			ft_strcmp(arg, "bla") != 0 &&
+			ft_strcmp(arg, "Multibrot") != 0 )
 		crash(1);
 }
 
@@ -47,12 +48,16 @@ int		fract_name(char *name)
 		return (3);
 	if (ft_strcmp(name, "bla") == 0)
 		return (4);
+	if (ft_strcmp(name, "Multibrot") == 0)
+		return (5);
+
 	return (0);
 }
 
 void	init_context(t_context *f)
 {
 	f->palette = 0;
+	f->d = 2;
 	f->m_x = 93;
 	f->m_y = 52;
 	f->max_iter = 50;

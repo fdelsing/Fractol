@@ -6,7 +6,7 @@
 /*   By: fdelsing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 22:19:22 by fdelsing          #+#    #+#             */
-/*   Updated: 2018/03/15 21:53:29 by fdelsing         ###   ########.fr       */
+/*   Updated: 2018/03/16 16:34:38 by fdelsing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef	struct	s_context
 	double	zoom;
 	int		m_x;
 	int		m_y;
+	int		d;
 	int		palette;
 }				t_context;
 
@@ -40,6 +41,7 @@ void	ft_init_mlx(t_param *p, char *win_name);
 void	color(int iter, t_context *f);
 
 void	mandelbrot(t_context *f);
+void	multibrot(t_context *f);
 void	julia(t_context *f);
 void	burning_ship(t_context *f);
 void	sierpinski(t_context *f);

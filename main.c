@@ -6,7 +6,7 @@
 /*   By: fdelsing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 22:00:48 by fdelsing          #+#    #+#             */
-/*   Updated: 2018/03/16 16:35:55 by fdelsing         ###   ########.fr       */
+/*   Updated: 2018/03/19 23:31:39 by fdelsing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	init_context(t_context *f)
 	f->d = 2;
 	f->m_x = 93;
 	f->m_y = 52;
-	f->max_iter = 50;
+	f->max_iter = 52;
 	f->ratio = 2.1 / (WIN_Y / 2);
 	f->zoom = 1;
 }

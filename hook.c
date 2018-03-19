@@ -6,7 +6,7 @@
 /*   By: fdelsing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 13:59:07 by fdelsing          #+#    #+#             */
-/*   Updated: 2018/03/15 23:49:45 by fdelsing         ###   ########.fr       */
+/*   Updated: 2018/03/20 00:11:33 by fdelsing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,10 @@ int		keyhook(int keycode, t_context *f)
 		f->p.c_x = WIN_X/2;
 		f->p.c_y = WIN_Y/2;
 	}
+	if (keycode == 47)
+		f->d++;
+	if (keycode == 43)
+		f->d--;
 	///////////
 	if (keycode == 27) // zoom out
 	{
@@ -56,8 +60,9 @@ int		keyhook(int keycode, t_context *f)
 		f->zoom *= 0.8;
 		f->ratio *= 0.8;
 		printf("zoom = %f\n", f->zoom);
-//		f->p.c_x += ((WIN_X / 2) - f->m_x) * f->zoom;
-//		f->p.c_y += ((WIN_Y / 2) - f->m_y) * f->zoom;
+		f->p.c_x += (( WIN_X / 2 - f->m_x) * f->zoom);
+		f->p.c_y += ((WIN_Y / 2 - f->m_y) * f->zoom);
+		//f->p.c_y +=  ((WIN_Y / 2 - f->m_y) * f->zoom);
 
 		printf("p_x = %d, p_y = %d\n", f->p.c_x, f->p.c_y);
 

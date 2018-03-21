@@ -6,7 +6,7 @@
 /*   By: fdelsing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 21:53:16 by fdelsing          #+#    #+#             */
-/*   Updated: 2018/03/15 21:44:35 by fdelsing         ###   ########.fr       */
+/*   Updated: 2018/03/21 13:52:21 by fdelsing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ typedef	struct	s_param
 {
 	void	*mlx;
 	void	*win;
-	int		c_x;
-	int		c_y;
+	double	c_x;
+	double	c_y;
 	t_img	img;
 }				t_param;
 #endif

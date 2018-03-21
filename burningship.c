@@ -6,7 +6,7 @@
 /*   By: fdelsing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 20:44:33 by fdelsing          #+#    #+#             */
-/*   Updated: 2018/03/15 21:46:46 by fdelsing         ###   ########.fr       */
+/*   Updated: 2018/03/21 13:54:46 by fdelsing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void		burning_ship(t_context *f)
 		y = 0;
 		while (y <= WIN_Y)
 		{
-			c_r = (x - f->p.c_x) * f->ratio * f->zoom;
-			c_i = (y - f->p.c_y) * f->ratio * f->zoom;
+			c_r = (x - f->p.c_x) * f->ratio;// * f->zoom;
+			c_i = (y - f->p.c_y) * f->ratio;// * f->zoom;
 			f->p.img.color.hex = algo(f, c_r, c_i) * 0x0000ff / f->max_iter;
 			ft_put_pixel(f->p.img.data_img, x, y, &f->p);
 		//if (mandelbrot(f, c_r, c_i) == f->max_iter + 1)

@@ -6,7 +6,7 @@
 /*   By: fdelsing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 21:01:00 by fdelsing          #+#    #+#             */
-/*   Updated: 2018/03/15 21:47:20 by fdelsing         ###   ########.fr       */
+/*   Updated: 2018/03/21 15:20:17 by fdelsing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ void		sierpinski(t_context *f)
 		{
 		//	printf("ratio = %f\n", f->ratio);
 			//f->p.img.color = 0x0000ff;
-			valx = (x - f->p.c_x) * f->ratio;
-			valy = (y - f->p.c_y) * f->ratio;
+			valx = (x - f->p.c_x) * f->zoom * f->ratio;
+			valy = (y - f->p.c_y) * f->zoom * f->ratio;
 			f->p.img.color.hex = algo(f, valx, valy) * 0x0000ff / f->max_iter;
 			ft_put_pixel(f->p.img.data_img, x, y, &f->p);
 			y++;

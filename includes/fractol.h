@@ -6,7 +6,7 @@
 /*   By: fdelsing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 22:19:22 by fdelsing          #+#    #+#             */
-/*   Updated: 2018/03/19 22:28:10 by fdelsing         ###   ########.fr       */
+/*   Updated: 2018/03/21 19:18:15 by fdelsing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ typedef	struct	s_context
 	int		max_iter;
 	double	ratio;
 	double	zoom;
+	double	zoomx;
+	double	zoomy;
 	int		m_x;
 	int		m_y;
 	int		d;

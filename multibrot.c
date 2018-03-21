@@ -6,7 +6,7 @@
 /*   By: fdelsing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 16:13:34 by fdelsing          #+#    #+#             */
-/*   Updated: 2018/03/19 22:35:56 by fdelsing         ###   ########.fr       */
+/*   Updated: 2018/03/21 13:55:11 by fdelsing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ void		multibrot(t_context *f)
 		y = 0;
 		while (y <= WIN_Y)
 		{
-			c_r = (x - f->p.c_x) * f->ratio * f->zoom;
-			c_i = (y - f->p.c_y) * f->ratio * f->zoom;
+			c_r = (x - f->p.c_x) * f->ratio;// * f->zoom;
+			c_i = (y - f->p.c_y) * f->ratio;// * f->zoom;
 			color(algo(f, c_r, c_i), f);
 			ft_put_pixel(f->p.img.data_img, x, y, &f->p);
 			y++;

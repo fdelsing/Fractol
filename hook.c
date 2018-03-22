@@ -6,7 +6,7 @@
 /*   By: fdelsing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 13:59:07 by fdelsing          #+#    #+#             */
-/*   Updated: 2018/03/21 19:18:13 by fdelsing         ###   ########.fr       */
+/*   Updated: 2018/03/22 16:10:14 by fdelsing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ int		keyhook(int keycode, t_context *f)
 	{
 		f->zoom /=  0.8;
 		//f->ratio /= 0.8;
-		f->zoomx = (double)(f->m_x - WIN_X / 2) * (1 - f->zoom);
-		f->zoomy = (double)(f->m_y - WIN_Y /2) * (1 - f->zoom);
+		f->zoomx = (double)((f->m_x - WIN_X / 2) * (1 - f->zoom))/ (f->zoom*f->ratio);
+		f->zoomy = (double)((f->m_y - WIN_Y /2) * (1 - f->zoom))/ (f->zoom * f->ratio);
 //		f->p.c_x += ((WIN_X /2)- f->m_x) / f->zoom;
 //		f->p.c_y += ((WIN_Y/2) - f->m_y) / f->zoom;
 	}
@@ -65,8 +65,10 @@ int		keyhook(int keycode, t_context *f)
 		bla = 1 / f->zoom;
 //		f->ratio *= 0.9;
 		printf("ratio = %f\n", f->ratio);
-		f->zoomx = (double)(f->m_x - (WIN_X / 2)) * f->ratio * (1 - f->zoom);
-		f->zoomy = (double)(f->m_y - (WIN_Y /2)) * f->ratio * (1 - f->zoom);
+		f->zoomx = (double)(f->m_x - (WIN_X / 2)) * f->ratio * 
+			(1 - f->zoom);
+		f->zoomy = (double)(f->m_y - (WIN_Y /2)) * f->ratio *
+		   	(1 - f->zoom);
 
 //		f->p.c_x -= (double)(f->m_x - (WIN_X / 2)) * (1 - 0.9);
 //		f->p.c_y -= (double)(f->m_y - (WIN_Y /2)) * (1 - 0.9);

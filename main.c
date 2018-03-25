@@ -58,8 +58,6 @@ void	init_context(t_context *f)
 {
 	f->palette = 0;
 	f->d = 2;
-	f->m_x = 93;
-	f->m_y = 52;
 	f->max_iter = 52;
 	f->ratio = 2.1 / (WIN_Y / 2);
 	f->zoom  = 1;

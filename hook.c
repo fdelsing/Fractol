@@ -48,6 +48,13 @@ int		keyhook(int keycode, t_context *f)
 	if (keycode == 43)
 		f->d--;
 	///////////
+
+
+
+
+
+
+
 	if (keycode == 27) // zoom out
 	{
 		f->zoom /=  0.8;
@@ -57,18 +64,21 @@ int		keyhook(int keycode, t_context *f)
 //		f->p.c_x += ((WIN_X /2)- f->m_x) / f->zoom;
 //		f->p.c_y += ((WIN_Y/2) - f->m_y) / f->zoom;
 	}
+
 	if (keycode == 24) // zoom in
 	{
 		printf("Before :	zoomx = %f, zoomy = %f\n", f->zoomx, f->zoomy);
-		double bla;
-		f->zoom *= 0.9;
-		bla = 1 / f->zoom;
+		double bla;	
+
+
+		f->zoom /= 2;
+		bla = 1 - f->zoom;
 //		f->ratio *= 0.9;
-		printf("ratio = %f\n", f->ratio);
-		f->zoomx = (double)(f->m_x - (WIN_X / 2)) * f->ratio * 
-			(1 - f->zoom);
-		f->zoomy = (double)(f->m_y - (WIN_Y /2)) * f->ratio *
-		   	(1 - f->zoom);
+//		printf("ratio = %f\n", f->ratio);
+
+
+		f->zoomx += (double)(f->m_x - (WIN_X / 2)) * f->ratio * f->zoom;
+		f->zoomy += (double)(f->m_y - (WIN_Y / 2)) * f->ratio * f->zoom;
 
 //		f->p.c_x -= (double)(f->m_x - (WIN_X / 2)) * (1 - 0.9);
 //		f->p.c_y -= (double)(f->m_y - (WIN_Y /2)) * (1 - 0.9);

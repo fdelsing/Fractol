@@ -1,45 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   julia.c                                            :+:      :+:    :+:   */
+/*   sierpinski.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fdelsing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/08 17:50:10 by fdelsing          #+#    #+#             */
-/*   Updated: 2018/03/15 23:49:44 by fdelsing         ###   ########.fr       */
+/*   Created: 2018/03/13 21:01:00 by fdelsing          #+#    #+#             */
+/*   Updated: 2018/03/29 17:07:35 by fdelsing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include <fractol.h>
 
-static int	algo(t_context *f, double c_r, double c_i)
+static int	algo(t_context *f, double x, double y)
 {
 	int		iter;
-	float	tmp;
-	float	z_r;
-	float	z_i;
+	int		size;
 
-	z_r = c_r;
-	z_i = c_i;
-	c_r = ((f->m_x - f->p.c_x) * f->ratio);
-	c_i = ((f->m_y - f->p.c_y) * f->ratio);
 	iter = 0;
-	while ((z_r * z_r) + (z_i * z_i) < 4 && iter < f->max_iter)
+	size = 3;
+	x = fabs(x);
+	y = fabs(y);
+	while ((((int)x % size != 1) || (int)y % size != 1)
+			&& iter <= f->max_iter)
 	{
-		tmp = z_r;
-		z_r = (z_r * z_r) - (z_i * z_i) + c_r;
-		z_i = 2 * tmp * z_i + c_i;
 		iter++;
+		x *= 3;
+		y *= 3;
 	}
 	return (iter);
 }
 
-void	julia(t_context *f)
+void		sierpinski(t_context *f)
 {
 	int		x;
 	int		y;
-	double	c_r;
-	double	c_i;
+	double	valx;
+	double	valy;
 
 	x = 0;
 	while (x <= WIN_X)
@@ -47,11 +44,9 @@ void	julia(t_context *f)
 		y = 0;
 		while (y <= WIN_Y)
 		{
-			c_r = (x - f->p.c_x) * f->ratio;// * f->zoom;
-			c_i = (y - f->p.c_y) * f->ratio;// * f->zoom;
-			
-			color(algo(f, c_r, c_i), f);
-			//f->p.img.color.hex = color(algo(f, c_r, c_i), f);
+			valx = (double)(x - f->p.c_x) * f->ratio * f->zoom + f->zoomx;
+			valy = (double)(y - f->p.c_y) * f->ratio * f->zoom + f->zoomy;
+			color(algo(f, valx, valy), f);
 			ft_put_pixel(f->p.img.data_img, x, y, &f->p);
 			y++;
 		}

@@ -6,15 +6,15 @@
 /*   By: fdelsing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 21:53:16 by fdelsing          #+#    #+#             */
-/*   Updated: 2018/03/21 13:52:21 by fdelsing         ###   ########.fr       */
+/*   Updated: 2018/03/29 17:40:12 by fdelsing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_INIT_MLX_H
 # define FT_INIT_MLX_H
 
-#include <mlx.h>
-#include <s_color.h>
+# include <mlx.h>
+# include <s_color.h>
 
 # define WIN_X 1200
 # define WIN_Y 600

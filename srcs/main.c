@@ -6,7 +6,7 @@
 /*   By: fdelsing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 22:00:48 by fdelsing          #+#    #+#             */
-/*   Updated: 2018/03/22 16:10:25 by fdelsing         ###   ########.fr       */
+/*   Updated: 2018/03/29 17:49:33 by fdelsing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	check_arg(char *arg)
 			ft_strcmp(arg, "Burningship") != 0 &&
 			ft_strcmp(arg, "Sierpinski") != 0 &&
 			ft_strcmp(arg, "bla") != 0 &&
-			ft_strcmp(arg, "Multibrot") != 0 )
+			ft_strcmp(arg, "Multibrot") != 0)
 		crash(1);
 }
 
@@ -42,15 +42,14 @@ int		fract_name(char *name)
 		return (0);
 	if (ft_strcmp(name, "Julia") == 0)
 		return (1);
-	if (ft_strcmp(name, "BurningShip") == 0)
+	if (ft_strcmp(name, "Burningship") == 0)
 		return (2);
 	if (ft_strcmp(name, "Sierpinski") == 0)
 		return (3);
-	if (ft_strcmp(name, "bla") == 0)
-		return (4);
 	if (ft_strcmp(name, "Multibrot") == 0)
+		return (4);
+	if (ft_strcmp(name, "bla") == 0)
 		return (5);
-
 	return (0);
 }
 
@@ -60,7 +59,7 @@ void	init_context(t_context *f)
 	f->d = 2;
 	f->max_iter = 52;
 	f->ratio = 2.1 / (WIN_Y / 2);
-	f->zoom  = 1;
+	f->zoom = 1;
 	f->zoomx = 0;
 	f->zoomy = 0;
 }
@@ -68,20 +67,14 @@ void	init_context(t_context *f)
 int		main(int argc, char **argv)
 {
 	t_context	f;
-	int			i;
 
-	i = 1;
 	if (argc > 1)
 	{
-		while (argv[i])
-		{
-			check_arg(argv[i]);
-			f.name = fract_name(argv[i]);
-			ft_init_mlx(&f.p, argv[i]);
-			init_context(&f);
-			fractals(&f);
-			i++;
-		}
+		check_arg(argv[1]);
+		f.name = fract_name(argv[1]);
+		ft_init_mlx(&f.p, argv[1]);
+		init_context(&f);
+		fractals(&f);
 		hook(&f);
 	}
 	else

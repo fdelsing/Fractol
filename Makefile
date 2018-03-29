@@ -6,7 +6,7 @@
 #    By: fdelsing <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/03 22:10:04 by fdelsing          #+#    #+#              #
-#    Updated: 2018/03/16 16:15:18 by fdelsing         ###   ########.fr        #
+#    Updated: 2018/03/29 17:50:48 by fdelsing         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,12 +14,14 @@ NAME = fractol
 
 HEADER = -I./includes	-I./libft/includes
 CC = gcc
-#CFLAGS = -Wall -Wextra -Werror $(HEADER)
-CFLAGS = $(HEADER)
+CFLAGS = -Wall -Wextra -Werror $(HEADER)
+#CFLAGS = $(HEADER)
 FLAGS = -lmlx -framework OpenGL -framework Appkit
 
-SRC = main.c ft_init_mlx.c ft_put_pixel.c mandelbrot.c julia.c burningship.c \
-	  multibrot.c bla.c sierpinski.c hook.c fractals.c
+SRC = ./srcs/main.c		./srcs/ft_init_mlx.c	./srcs/ft_put_pixel.c \
+	  ./srcs/mandelbrot.c	./srcs/julia.c		./srcs/burningship.c \
+	  ./srcs/multibrot.c	./srcs/sierpinski.c		./srcs/hook.c \
+	  ./srcs/fractals.c		./srcs/bonus_keyzoom.c		./srcs/bla.c
 
 OBJ = $(SRC:.c=.o)
 

@@ -6,7 +6,7 @@
 #    By: fdelsing <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/03 22:10:04 by fdelsing          #+#    #+#              #
-#    Updated: 2018/04/12 13:57:10 by fdelsing         ###   ########.fr        #
+#    Updated: 2018/04/12 17:55:21 by fdelsing         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,9 @@ fclean: clean
 libfclean:
 	$(MAKE) fclean -C ./libft
 
-re: fclean all
+re: 
+	$(MAKE) fclean
+	$(MAKE) all
 
 libre:
 	$(MAKE) re -C ./libft

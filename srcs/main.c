@@ -6,7 +6,7 @@
 /*   By: fdelsing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 22:00:48 by fdelsing          #+#    #+#             */
-/*   Updated: 2018/04/12 16:12:29 by fdelsing         ###   ########.fr       */
+/*   Updated: 2018/04/12 17:52:31 by fdelsing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,6 @@ void	crash(int i)
 	exit(0);
 }
 
-void	check_arg(char *arg)
-{
-	if (ft_strcmp(arg, "Mandelbrot") != 0 &&
-			ft_strcmp(arg, "Julia") != 0 &&
-			ft_strcmp(arg, "Burningship") != 0 &&
-			ft_strcmp(arg, "Sierpinski") != 0 &&
-			ft_strcmp(arg, "Multibrot") != 0 &&
-			ft_strcmp(arg, "Bacteria") != 0 &&
-			ft_strcmp(arg, "Tricorn") != 0)
-		crash(1);
-}
-
 int		fract_name(char *name)
 {
 	if (ft_strcmp(name, "Mandelbrot") == 0)
@@ -55,6 +43,7 @@ int		fract_name(char *name)
 		return (5);
 	if (ft_strcmp(name, "Tricorn") == 0)
 		return (6);
+	crash(1);
 	return (0);
 }
 
@@ -75,7 +64,6 @@ int		main(int argc, char **argv)
 
 	if (argc > 1)
 	{
-		check_arg(argv[1]);
 		f.name = fract_name(argv[1]);
 		ft_init_mlx(&f.p, argv[1]);
 		init_context(&f);

@@ -6,7 +6,7 @@
 /*   By: fdelsing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 13:59:07 by fdelsing          #+#    #+#             */
-/*   Updated: 2018/04/11 17:33:47 by fdelsing         ###   ########.fr       */
+/*   Updated: 2018/04/12 17:52:06 by fdelsing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ int				mousehook(int button, int x, int y, t_context *f)
 	double	zm_sp;
 
 	zm_sp = 1.2;
-	ft_bzero((char*)f->p.img.data_img, (WIN_X * WIN_Y) * 4);
 	if (button == 5)
 	{
 		f->zoom *= zm_sp;
@@ -90,10 +89,7 @@ int				mousepos(int x, int y, t_context *f)
 	f->m_x = x;
 	f->m_y = y;
 	if (f->name == 1 || f->name == 5)
-	{
-		ft_bzero((char*)f->p.img.data_img, (WIN_X * WIN_Y) * 4);
 		travel_map(f);
-	}
 	return (0);
 }
 

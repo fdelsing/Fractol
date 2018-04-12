@@ -6,7 +6,7 @@
 #    By: fdelsing <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/03 22:10:04 by fdelsing          #+#    #+#              #
-#    Updated: 2018/03/29 17:50:48 by fdelsing         ###   ########.fr        #
+#    Updated: 2018/04/12 13:57:10 by fdelsing         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,13 +15,13 @@ NAME = fractol
 HEADER = -I./includes	-I./libft/includes
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror $(HEADER)
-#CFLAGS = $(HEADER)
-FLAGS = -lmlx -framework OpenGL -framework Appkit
+MLX = -lmlx -framework OpenGL -framework Appkit
 
 SRC = ./srcs/main.c		./srcs/ft_init_mlx.c	./srcs/ft_put_pixel.c \
 	  ./srcs/mandelbrot.c	./srcs/julia.c		./srcs/burningship.c \
-	  ./srcs/multibrot.c	./srcs/sierpinski.c		./srcs/hook.c \
-	  ./srcs/fractals.c		./srcs/bonus_keyzoom.c		./srcs/bla.c
+	  ./srcs/bonus_multibrot.c	./srcs/bonus_sierpinski.c	./srcs/hook.c \
+	  ./srcs/fractals.c	./srcs/bonus_keyzoom.c	./srcs/bonus_bacteria.c \
+	  ./srcs/bonus_tricorn.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -29,7 +29,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(MAKE) -C ./libft
-	$(CC) -o $(NAME) -L./libft/ -lft $(FLAGS) $(OBJ)
+	$(CC) -o $(NAME) -L./libft/ -lft $(MLX) $(OBJ)
 
 clean:
 	rm -rf $(OBJ)
@@ -47,8 +47,3 @@ re: fclean all
 
 libre:
 	$(MAKE) re -C ./libft
-
-#######################
-
-makesan:
-	gcc -fsanitize=address -g -L./libft/ -lft $(FLAGS) $(HEADER) $(SRC)

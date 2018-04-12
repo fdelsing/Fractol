@@ -6,7 +6,7 @@
 /*   By: fdelsing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 22:00:48 by fdelsing          #+#    #+#             */
-/*   Updated: 2018/03/29 17:49:33 by fdelsing         ###   ########.fr       */
+/*   Updated: 2018/04/12 16:12:29 by fdelsing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ void	crash(int i)
 	if (i == 1)
 		ft_putendl("ERROR: Missing or invalid fractal name."
 				"USAGE:\n\t- ./fractol Mandelbrot\n\t- ./fractol Julia"
-				"\n\t- ./fractol BurningShip\n\t- ./fractol Sierpinski");
+				"\n\t- ./fractol Burningship\n\t- ./fractol Sierpinski\n\t"
+				"- ./fractol Multibrot\n\t- ./fractol Bacteria\n\t"
+				"- ./fractol Tricorn");
 	if (i == 3)
 		ft_putendl("You have succesfully exited the programm.");
 	exit(0);
@@ -31,8 +33,9 @@ void	check_arg(char *arg)
 			ft_strcmp(arg, "Julia") != 0 &&
 			ft_strcmp(arg, "Burningship") != 0 &&
 			ft_strcmp(arg, "Sierpinski") != 0 &&
-			ft_strcmp(arg, "bla") != 0 &&
-			ft_strcmp(arg, "Multibrot") != 0)
+			ft_strcmp(arg, "Multibrot") != 0 &&
+			ft_strcmp(arg, "Bacteria") != 0 &&
+			ft_strcmp(arg, "Tricorn") != 0)
 		crash(1);
 }
 
@@ -48,8 +51,10 @@ int		fract_name(char *name)
 		return (3);
 	if (ft_strcmp(name, "Multibrot") == 0)
 		return (4);
-	if (ft_strcmp(name, "bla") == 0)
+	if (ft_strcmp(name, "Bacteria") == 0)
 		return (5);
+	if (ft_strcmp(name, "Tricorn") == 0)
+		return (6);
 	return (0);
 }
 
@@ -74,7 +79,7 @@ int		main(int argc, char **argv)
 		f.name = fract_name(argv[1]);
 		ft_init_mlx(&f.p, argv[1]);
 		init_context(&f);
-		fractals(&f);
+		travel_map(&f);
 		hook(&f);
 	}
 	else

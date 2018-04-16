@@ -6,7 +6,7 @@
 #    By: fdelsing <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/03 22:10:04 by fdelsing          #+#    #+#              #
-#    Updated: 2018/04/12 17:55:21 by fdelsing         ###   ########.fr        #
+#    Updated: 2018/04/16 19:50:21 by fdelsing         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,12 @@ SRC = ./srcs/main.c		./srcs/ft_init_mlx.c	./srcs/ft_put_pixel.c \
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
+
+%.o: %.c includes/
+	$(CC) $(FLAGS) -c -o $@ $<
+
+#libft/libft.a: libft/src
+#	make -C libft/
 
 $(NAME): $(OBJ)
 	$(MAKE) -C ./libft

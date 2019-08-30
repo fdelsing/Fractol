@@ -1,5 +1,5 @@
 # Fractol
-This project is an introduction to 2D programming in C language. It is basically a frame, in which you can view different fractals such as :
+This project is an introduction to 2D programming in C language using 42's self-made graphic library *MinilibX*. It is basically a frame, in which you can view different fractals such as :
 - Mandelbrot
 - Julia
 - Burning ship
